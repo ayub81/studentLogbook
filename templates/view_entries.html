@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Logbook Entries </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Logbook Entries</h1>
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Activity</th>
+                <th>Hours</th>
+                <th>Supervisor's Comments</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry[1] }}</td>
+                <td>{{ entry[2] }}</td>
+                <td>{{ entry[3] }}</td>
+                <td>{{ entry[4] }}</td>
+                <td>{{ entry[5] }}</td>
+                <td>
+                    <a href=" /edit_entry/{{entry[0]}}">
+                        <button type="button">✏️ Edit</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/delete_entry/{{entry[0]}}">
+                        <button type="button">🗑️ Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+      <br>
+      <a href="/dashboard">Back to Dashboard</a>
+    </body>
+
+
+
+
+
+
+</html>

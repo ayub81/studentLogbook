@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard</title>
+</head>
+<body>
+    <h1>Supervisor Dashboard</h1>
+    <p>Welcome Supervisor, {{ name }}!👨‍🏫</p>
+    <p>You are now logged in as a supervisor.</p>
+    <h2>Assigned Students</h2>
+    {% if students %}
+    <table border="1" width = 100% cellpadding="10" cellspacing="0">
+    <tr>
+        <th>Admission Number</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{ student[1] }}</td>
+        <td>{{ student[2] }}</td>
+        <td>{{ student[3] }}</td>
+        <td>
+            <a href="/student_entries/{{ student[0] }}">View Logbook Entries</a>
+        </td>
+    </tr>
+    {% endfor %}  
+    </table>
+    {% else %}
+    <p>No Student Assigned to You</p>
+    {% endif %}
+    <br>
+    <a href="/logout">
+        <button>🚪 Logout</button>
+    </a>
+</body>
+</html>

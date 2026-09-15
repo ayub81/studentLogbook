@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Logbook Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Review Logbook Entry</h2>
+
+    <form method="POST">
+
+        <label>Date</label>
+        <input type="text" value="{{ entry[0] }}" readonly>
+        
+        <label>Activity</label>
+        <textarea rows="5" readonly>{{ entry[1] }}</textarea>
+
+        <label>Hours Worked</label>
+        <input type="number" value="{{ entry[2] }}" readonly>
+
+        <label>Supervisor Comment</label>
+        <textarea
+            name="supervisor_comment"
+            rows="4"
+            placeholder="Enter your comments here..."
+        >{{ entry[3] }}</textarea>
+
+        <label>Status</label>
+
+        <select name="status" required>
+            <option value="pending"
+                {% if entry[4] == 'pending' %}selected{% endif %}>
+                Pending
+            </option>
+
+            <option value="approved"
+                {% if entry[4] == 'approved' %}selected{% endif %}>
+                Approved
+            </option>
+
+            <option value="rejected"
+                {% if entry[4] == 'rejected' %}selected{% endif %}>
+                Rejected
+            </option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">💾 Save Review</button>
+
+    </form>
+
+    <br>
+
+    <a href="/supervisor_dashboard">
+        <button type="button">⬅ Back to Dashboard</button>
+    </a>
+
+</div>
+
+</body>
+</html>

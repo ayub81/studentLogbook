@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Logbook Entries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <h1>Student Logbook Entries</h1>
+    {% if entries %}
+    <table border="1" width="100%" cellpadding="10" cellspacing="0">
+         <tr>
+            <th>Date</th>
+            <th>Activity</th>
+            <th>Hours Worked</th>
+            <th>Status</th>
+            <th>Supervisor Comment</th>
+            <th>Action</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry[1] }}</td>
+            <td>{{ entry[2] }}</td>
+            <td>{{ entry[3] }}</td>
+            <td>{{ entry[5] }}</td>
+            <td>
+                {% if entry[4] %}
+                    {{ entry[4] }}
+                {% else %}
+                    No comment yet
+                {% endif %}
+            </td>
+            <td>
+                <a href="/review_entry/{{ entry[0] }}">
+                    Review
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% else %}
+    <p>No logbook entries found.</p>
+    {% endif %}
+    <br>
+    <a href="/supervisor_dashboard">
+        <button>⬅ Back to Dashboard</button>
+    </a>
+</div>
+</body>
+</html>

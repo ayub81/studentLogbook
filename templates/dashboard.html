@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <h1>Student Dashboard</h1>
+
+    <h2>Welcome, {{ name }}! 👋</h2>
+
+    <p>You have successfully logged in.</p>
+
+    <br>
+
+    <div class="buttons">
+
+        <a href="/add_entry">
+            <button type="button">📝 Add Logbook Entry</button>
+        </a>
+
+        <a href="/logout">
+            <button type="button">🚪 Logout</button>
+        </a>
+        <a href="/view_entries">
+            <button type="button">📄 View Logbook Entries</button>
+        </a>
+
+    </div>
+
+</div>
+</body>
+</html>

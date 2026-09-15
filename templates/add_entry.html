@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Logbook Entry</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Add Logbook Entry</h1>
+   
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label for="entry_date">Date</label>
+            <input type="date" id="entry_date" name="entry_date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="activity">Work Done</label>
+            <textarea id="activity" name="activity" rows="6" placeholder="Describe the work you did today..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="hours_worked">Hours Worked</label>
+            <input type="number" id="hours_worked" name="hours_worked" min="1" max="24" required>
+        </div>
+
+        <div class="form-group">
+            <label for="remarks">Remarks</label>
+            <textarea id="remarks" name="remarks" rows="4" placeholder="Enter any additional remarks..."></textarea>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">💾 Save Entry</button>
+
+            <a href="/dashboard">
+                <button type="button">⬅ Back</button>
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
